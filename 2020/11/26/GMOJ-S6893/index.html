@@ -6,12 +6,12 @@
   
   <title>GMOJ S6893 【小 T 与灵石】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description给你一棵有 $n$ 个点的树，边权均为 1。再给你 $m$ 个点集，第 $i$ 个点集有 $k_i$ 个点，定义 $f_{x, i}$ 表示点 $x$ 到第 $i$ 个点集中所有点的最大距离。 定义 $g_x$ 表示 $\min_{i &#x3D; 1}^{m} f_{x, i}$，试求 $g_1$ ~ $g_n$。 $$1 \leq n, q \leq 3 \times 10^5,">
+  <meta name="description" content="Description给你一棵有 $n$ 个点的树，边权均为 1。再给你 $m$ 个点集，第 $i$ 个点集有 $k_i$ 个点，定义 $f_{x, i}$ 表示点 $x$ 到第 $i$ 个点集中所有点的最大距离。 定义 $g_x$ 表示 $\min_{i &#x3D; 1}^{m} f_{x, i}$，试求 $g_1$ ~ $g_n$。 1 \leq n, q \leq 3 \times 10^5, \s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S6893 【小 T 与灵石】">
 <meta property="og:url" content="http://example.com/2020/11/26/GMOJ-S6893/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description给你一棵有 $n$ 个点的树，边权均为 1。再给你 $m$ 个点集，第 $i$ 个点集有 $k_i$ 个点，定义 $f_{x, i}$ 表示点 $x$ 到第 $i$ 个点集中所有点的最大距离。 定义 $g_x$ 表示 $\min_{i &#x3D; 1}^{m} f_{x, i}$，试求 $g_1$ ~ $g_n$。 $$1 \leq n, q \leq 3 \times 10^5,">
+<meta property="og:description" content="Description给你一棵有 $n$ 个点的树，边权均为 1。再给你 $m$ 个点集，第 $i$ 个点集有 $k_i$ 个点，定义 $f_{x, i}$ 表示点 $x$ 到第 $i$ 个点集中所有点的最大距离。 定义 $g_x$ 表示 $\min_{i &#x3D; 1}^{m} f_{x, i}$，试求 $g_1$ ~ $g_n$。 1 \leq n, q \leq 3 \times 10^5, \s">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-25T23:11:09.000Z">
 <meta property="article:modified_time" content="2020-11-26T07:43:07.191Z">
@@ -101,9 +101,7 @@
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给你一棵有 $n$ 个点的树，边权均为 1。再给你 $m$ 个点集，第 $i$ 个点集有 $k_i$ 个点，定义 $f_{x, i}$ 表示点 $x$ 到第 $i$ 个点集中所有点的最大距离。</p>
 <p>定义 $g_x$ 表示 $\min_{i = 1}^{m} f_{x, i}$，试求 $g_1$ ~ $g_n$。</p>
-<p>$$1 \leq n, q \leq 3 \times 10^5, \sum{k_i} \leq 10^6$$</p>
-<a id="more"></a>
-
+<script type="math/tex; mode=display">1 \leq n, q \leq 3 \times 10^5, \sum{k_i} \leq 10^6</script><a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>发现对于一个点集，如果我们称其中距离最远的点对为这个点集的直径的两端，那么一个点到这个点集中所有点的最大距离一定是到中点的距离加上直径长度的一半。</p>
 <p>对于中点在一个点上的情况，我们把直径的长度 $d$ 的一半当作这个点的点权，如果有多次赋值则取最小值，并标记一下它。</p>
 <p>对于中点在一条边上的情况，我们把 $\lceil \dfrac{2}{d} \rceil$ 给到中点所在的边的两端的点，并标记一下它们。</p>
@@ -119,7 +117,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/26/GMOJ-S6893/" data-id="ckk65p4el002kaoavfotnhale" data-title="GMOJ S6893 【小 T 与灵石】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/26/GMOJ-S6893/" data-id="ckk66hggd002jrwavbowo2xo2" data-title="GMOJ S6893 【小 T 与灵石】" class="article-share-link">Share</a>
       
       
       

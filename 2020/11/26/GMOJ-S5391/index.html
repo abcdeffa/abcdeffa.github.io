@@ -6,12 +6,12 @@
   
   <title>GMOJ S5391 【卡常题】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description给你一个有 $2n$ 个点的二分图，每一个部分有 $n$ 个点。右侧的点每个点向两个左侧的点连边，一条边权为 $a$，一条边权为 $b$。激活一个右侧的点需要至少选择一个与它相连的左侧点，选择一个左侧点需要花费它所连出去的所有边的边权和的代价，问你激活所有右侧点所需的最小代价。 $$1 \leq n \leq 10^6, 1 \leq a, b \leq 100$$">
+  <meta name="description" content="Description给你一个有 $2n$ 个点的二分图，每一个部分有 $n$ 个点。右侧的点每个点向两个左侧的点连边，一条边权为 $a$，一条边权为 $b$。激活一个右侧的点需要至少选择一个与它相连的左侧点，选择一个左侧点需要花费它所连出去的所有边的边权和的代价，问你激活所有右侧点所需的最小代价。 1 \leq n \leq 10^6, 1 \leq a, b \leq 100">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S5391 【卡常题】">
 <meta property="og:url" content="http://example.com/2020/11/26/GMOJ-S5391/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description给你一个有 $2n$ 个点的二分图，每一个部分有 $n$ 个点。右侧的点每个点向两个左侧的点连边，一条边权为 $a$，一条边权为 $b$。激活一个右侧的点需要至少选择一个与它相连的左侧点，选择一个左侧点需要花费它所连出去的所有边的边权和的代价，问你激活所有右侧点所需的最小代价。 $$1 \leq n \leq 10^6, 1 \leq a, b \leq 100$$">
+<meta property="og:description" content="Description给你一个有 $2n$ 个点的二分图，每一个部分有 $n$ 个点。右侧的点每个点向两个左侧的点连边，一条边权为 $a$，一条边权为 $b$。激活一个右侧的点需要至少选择一个与它相连的左侧点，选择一个左侧点需要花费它所连出去的所有边的边权和的代价，问你激活所有右侧点所需的最小代价。 1 \leq n \leq 10^6, 1 \leq a, b \leq 100">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-26T11:38:14.000Z">
 <meta property="article:modified_time" content="2020-11-26T11:50:31.709Z">
@@ -99,9 +99,7 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给你一个有 $2n$ 个点的二分图，每一个部分有 $n$ 个点。右侧的点每个点向两个左侧的点连边，一条边权为 $a$，一条边权为 $b$。激活一个右侧的点需要至少选择一个与它相连的左侧点，选择一个左侧点需要花费它所连出去的所有边的边权和的代价，问你激活所有右侧点所需的最小代价。</p>
-<p>$$1 \leq n \leq 10^6, 1 \leq a, b \leq 100$$</p>
-<a id="more"></a>
-
+<script type="math/tex; mode=display">1 \leq n \leq 10^6, 1 \leq a, b \leq 100</script><a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>这题本来是真卡常题，但是因为太过于卡常了，于是时限放宽为 1s，成为了假卡常题。</p>
 <p>考虑如果一个右侧点向两个左侧点 $i$ 和 $j$ 连边了，那么我们就新建一个图，连一条从 $i$ 到 $j$ 的边，表示 $i$ 和 $j$ 中至少要选一个。</p>
 <p>然后我们就得到了一棵基环树。</p>
@@ -112,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/26/GMOJ-S5391/" data-id="ckk65p4ed0024aoav6ofwhprb" data-title="GMOJ S5391 【卡常题】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/26/GMOJ-S5391/" data-id="ckk66hgg50024rwav33r1gsoq" data-title="GMOJ S5391 【卡常题】" class="article-share-link">Share</a>
       
       
       

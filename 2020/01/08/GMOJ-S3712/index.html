@@ -6,12 +6,12 @@
   
   <title>GMOJ S3712 【石中剑的考验】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description给出一个 $1$ ~ $n$ 的排列的最长上升子序列的长度 $k$ 以及这个序列，请你求出原排列可能的种类数，数据保证答案小于 $2^{31}$ 。 $$1 \leq n \leq 15$$">
+  <meta name="description" content="Description给出一个 $1$ ~ $n$ 的排列的最长上升子序列的长度 $k$ 以及这个序列，请你求出原排列可能的种类数，数据保证答案小于 $2^{31}$ 。 1 \leq n \leq 15">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S3712 【石中剑的考验】">
 <meta property="og:url" content="http://example.com/2020/01/08/GMOJ-S3712/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description给出一个 $1$ ~ $n$ 的排列的最长上升子序列的长度 $k$ 以及这个序列，请你求出原排列可能的种类数，数据保证答案小于 $2^{31}$ 。 $$1 \leq n \leq 15$$">
+<meta property="og:description" content="Description给出一个 $1$ ~ $n$ 的排列的最长上升子序列的长度 $k$ 以及这个序列，请你求出原排列可能的种类数，数据保证答案小于 $2^{31}$ 。 1 \leq n \leq 15">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-08T11:10:36.000Z">
 <meta property="article:modified_time" content="2020-01-08T11:37:08.700Z">
@@ -97,11 +97,9 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给出一个 $1$ ~ $n$ 的排列的最长上升子序列的长度 $k$ 以及这个序列，请你求出原排列可能的种类数，数据保证答案小于 $2^{31}$ 。</p>
-<p>$$1 \leq n \leq 15$$</p>
-<a id="more"></a>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>考虑使用 **状压 DP ** 来解题。</p>
-<p>考虑原排列在什么情况下合法，发现原排列合法的充要条件是 <strong>给出的子序列是原排列的子序列</strong> 以及 **原排列的最长上升子序列长度为 $k$ ** 。</p>
+<script type="math/tex; mode=display">1 \leq n \leq 15</script><a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>考虑使用 <strong>状压 DP </strong> 来解题。</p>
+<p>考虑原排列在什么情况下合法，发现原排列合法的充要条件是 <strong>给出的子序列是原排列的子序列</strong> 以及 <strong>原排列的最长上升子序列长度为 $k$ </strong> 。</p>
 <p>发现如果记录下当前所选状态的最长上升子序列的话不行，于是可以联想到 $O(n \log n)$ 求最长上升子序列的方法，记录下每个数是否在求最长上升子序列的队列中即可。</p>
 <p>于是我们可以设 $f[S]$ 表示当前选的数的状态为 $S$ 的方案数。</p>
 <p>其中 $S$ 为一个三进制数，第 $i$ 位为 0 表示该数未选，第 $i$ 位为 1 表示该数选了并且在队列中，第 $i$ 位为 2 表示该数选了但是不在队列中。</p>
@@ -113,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/01/08/GMOJ-S3712/" data-id="ckk65p4d7000caoav7c7b85np" data-title="GMOJ S3712 【石中剑的考验】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/01/08/GMOJ-S3712/" data-id="ckk66hgek000crwavb6v33jwl" data-title="GMOJ S3712 【石中剑的考验】" class="article-share-link">Share</a>
       
       
       

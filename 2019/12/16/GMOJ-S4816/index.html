@@ -6,12 +6,12 @@
   
   <title>GMOJ S4816 【label】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description有一棵有 $n$ 个节点的树，节点的编号从 $1$ 到 $n$ 。 现在要给树上的每一个节点赋一个 $[1, m]$ 之间的权值，要求相邻两个节点的权值差的绝对值大于等于 $k$ ，求合法的方案数，答案对 $(10^9+7)$ 取模。 共有 $T$ 组数据。 $$1 \leq T \leq 10, 1 \leq n,k \leq 100, 1 \leq m \leq 10^9">
+  <meta name="description" content="Description有一棵有 $n$ 个节点的树，节点的编号从 $1$ 到 $n$ 。 现在要给树上的每一个节点赋一个 $[1, m]$ 之间的权值，要求相邻两个节点的权值差的绝对值大于等于 $k$ ，求合法的方案数，答案对 $(10^9+7)$ 取模。 共有 $T$ 组数据。 1 \leq T \leq 10, 1 \leq n,k \leq 100, 1 \leq m \leq 10^9">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S4816 【label】">
 <meta property="og:url" content="http://example.com/2019/12/16/GMOJ-S4816/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description有一棵有 $n$ 个节点的树，节点的编号从 $1$ 到 $n$ 。 现在要给树上的每一个节点赋一个 $[1, m]$ 之间的权值，要求相邻两个节点的权值差的绝对值大于等于 $k$ ，求合法的方案数，答案对 $(10^9+7)$ 取模。 共有 $T$ 组数据。 $$1 \leq T \leq 10, 1 \leq n,k \leq 100, 1 \leq m \leq 10^9">
+<meta property="og:description" content="Description有一棵有 $n$ 个节点的树，节点的编号从 $1$ 到 $n$ 。 现在要给树上的每一个节点赋一个 $[1, m]$ 之间的权值，要求相邻两个节点的权值差的绝对值大于等于 $k$ ，求合法的方案数，答案对 $(10^9+7)$ 取模。 共有 $T$ 组数据。 1 \leq T \leq 10, 1 \leq n,k \leq 100, 1 \leq m \leq 10^9">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-12-16T12:10:18.000Z">
 <meta property="article:modified_time" content="2019-12-16T12:18:17.026Z">
@@ -99,9 +99,7 @@
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>有一棵有 $n$ 个节点的树，节点的编号从 $1$ 到 $n$ 。</p>
 <p>现在要给树上的每一个节点赋一个 $[1, m]$ 之间的权值，要求相邻两个节点的权值差的绝对值大于等于 $k$ ，求合法的方案数，答案对 $(10^9+7)$ 取模。</p>
 <p>共有 $T$ 组数据。</p>
-<p>$$1 \leq T \leq 10, 1 \leq n,k \leq 100, 1 \leq m \leq 10^9$$</p>
-<a id="more"></a>
-
+<script type="math/tex; mode=display">1 \leq T \leq 10, 1 \leq n,k \leq 100, 1 \leq m \leq 10^9</script><a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>考虑使用 <strong>树形DP</strong> 来解题。</p>
 <p>设 $f[i][j]$ 表示以 $i$ 为根的子树中 $i$ 号点填数 $j$ 的方案数。</p>
 <p>用前缀和优化一下就可以做到 $m \leq 10^4$ 。</p>
@@ -112,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2019/12/16/GMOJ-S4816/" data-id="ckk65p4dx001gaoave7uzcya9" data-title="GMOJ S4816 【label】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2019/12/16/GMOJ-S4816/" data-id="ckk66hgfi001grwavbmfw104p" data-title="GMOJ S4816 【label】" class="article-share-link">Share</a>
       
       
       

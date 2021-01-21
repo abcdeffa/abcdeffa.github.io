@@ -6,12 +6,12 @@
   
   <title>GMOJ S6431 【括号树】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description给你一个有 $n$ 个点的树，每个点上有一个符号，为左括号或右括号，定义一个字符串合法当且仅当这个字符串中的每一个左括号都有一个唯一的与之对应的右括号，定义 $k_i$ 为从根节点 1 到点 $i$ 的字符串中互不相同的合法括号串的个数。 现在请你求出 $(1 \times k_1) ; \text{xor} ; (1 \times k_1) ; \text{xor} ; …">
+  <meta name="description" content="Description给你一个有 $n$ 个点的树，每个点上有一个符号，为左括号或右括号，定义一个字符串合法当且仅当这个字符串中的每一个左括号都有一个唯一的与之对应的右括号，定义 $k_i$ 为从根节点 1 到点 $i$ 的字符串中互不相同的合法括号串的个数。 现在请你求出 $(1 \times k_1) \; \text{xor} \; (1 \times k_1) \; \text{xor}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S6431 【括号树】">
 <meta property="og:url" content="http://example.com/2020/07/23/GMOJ-S6431/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description给你一个有 $n$ 个点的树，每个点上有一个符号，为左括号或右括号，定义一个字符串合法当且仅当这个字符串中的每一个左括号都有一个唯一的与之对应的右括号，定义 $k_i$ 为从根节点 1 到点 $i$ 的字符串中互不相同的合法括号串的个数。 现在请你求出 $(1 \times k_1) ; \text{xor} ; (1 \times k_1) ; \text{xor} ; …">
+<meta property="og:description" content="Description给你一个有 $n$ 个点的树，每个点上有一个符号，为左括号或右括号，定义一个字符串合法当且仅当这个字符串中的每一个左括号都有一个唯一的与之对应的右括号，定义 $k_i$ 为从根节点 1 到点 $i$ 的字符串中互不相同的合法括号串的个数。 现在请你求出 $(1 \times k_1) \; \text{xor} \; (1 \times k_1) \; \text{xor}">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-23T12:55:35.000Z">
 <meta property="article:modified_time" content="2020-07-23T13:12:45.845Z">
@@ -97,10 +97,8 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>给你一个有 $n$ 个点的树，每个点上有一个符号，为左括号或右括号，定义一个字符串合法当且仅当这个字符串中的每一个左括号都有一个唯一的与之对应的右括号，定义 $k_i$ 为从根节点 1 到点 $i$ 的字符串中互不相同的合法括号串的个数。</p>
-<p>现在请你求出 $(1 \times k_1) ; \text{xor} ; (1 \times k_1) ; \text{xor} ; … ; (n \times k_n)$ 的值。</p>
-<p>$$1 \leq n \leq 5 \times 10^5$$</p>
-<a id="more"></a>
-
+<p>现在请你求出 $(1 \times k_1) \; \text{xor} \; (1 \times k_1) \; \text{xor} \; … \; (n \times k_n)$ 的值。</p>
+<script type="math/tex; mode=display">1 \leq n \leq 5 \times 10^5</script><a id="more"></a>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>设 $dp[x]$ 表示一端为点 $x$ 的合法括号串的个数，则 $k_x = k_{f_x} + dp[x]$，其中 $f_x$ 为点 $x$ 的父亲的编号。</p>
 <p>再用 $pre_x$ 表示最后一个未匹配的 <code>(</code> 的位置来辅助 DP 即可。</p>
 <p>具体转移可以参见 <strong>Code</strong> 部分。</p>
@@ -108,7 +106,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/07/23/GMOJ-S6431/" data-id="ckk65p4ee0026aoavg2sb50i8" data-title="GMOJ S6431 【括号树】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/07/23/GMOJ-S6431/" data-id="ckk66hgg80028rwavb9i5betj" data-title="GMOJ S6431 【括号树】" class="article-share-link">Share</a>
       
       
       

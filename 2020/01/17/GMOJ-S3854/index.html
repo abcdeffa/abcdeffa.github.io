@@ -104,7 +104,6 @@
 </ol>
 <p>有 $q$ 个询问，第 $i$ 个询问求要同时包含 $x_i$ 和 $y_i$ 的小组最多可以有多少人？</p>
 <a id="more"></a>
-
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>我们设 $f[i]$ 来表示第 $i$ 个人当队长时最多能够带多少人，这个可以用 <strong>离散化</strong> 加 <strong>线段树</strong> 来做，注意要对地位相同的情况进行处理。</p>
 <p>然后我们把询问离线来做，用 $ma_i$ 来表示 $\max(r_{x_i}, r_{y_i})$ ，然后以它为关键字来排序，然后开另一棵 <strong>线段树</strong> 来求出答案即可，注意这里也要对地位相同的情况进行处理。</p>
 <p>时间复杂度 $O(n \log n + q \log n)$ ，个人认为这题略显码农。</p>
@@ -112,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/01/17/GMOJ-S3854/" data-id="ckk65p4dk000waoav13oj0f7o" data-title="GMOJ S3854 【分组】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/01/17/GMOJ-S3854/" data-id="ckk66hgf0000wrwavgjy90xii" data-title="GMOJ S3854 【分组】" class="article-share-link">Share</a>
       
       
       

@@ -6,12 +6,12 @@
   
   <title>GMOJ S3848 【大水题】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description给你一个 $n ^ 2$ 位的数 $k$ ，请你求出有多少个整数 $x \in [1, k]$ ，满足 $x$ 翻转或大于 $k$ 或翻转后大于等于它自己。 例如 123 翻转后为 321 。 $$1 \leq n \leq 10 ^ 3, 2 | n$$">
+  <meta name="description" content="Description给你一个 $n ^ 2$ 位的数 $k$ ，请你求出有多少个整数 $x \in [1, k]$ ，满足 $x$ 翻转或大于 $k$ 或翻转后大于等于它自己。 例如 123 翻转后为 321 。 1 \leq n \leq 10 ^ 3, 2 | n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S3848 【大水题】">
 <meta property="og:url" content="http://example.com/2020/01/10/GMOJ-S3848/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description给你一个 $n ^ 2$ 位的数 $k$ ，请你求出有多少个整数 $x \in [1, k]$ ，满足 $x$ 翻转或大于 $k$ 或翻转后大于等于它自己。 例如 123 翻转后为 321 。 $$1 \leq n \leq 10 ^ 3, 2 | n$$">
+<meta property="og:description" content="Description给你一个 $n ^ 2$ 位的数 $k$ ，请你求出有多少个整数 $x \in [1, k]$ ，满足 $x$ 翻转或大于 $k$ 或翻转后大于等于它自己。 例如 123 翻转后为 321 。 1 \leq n \leq 10 ^ 3, 2 | n">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-09T23:33:49.000Z">
 <meta property="article:modified_time" content="2020-01-12T10:46:29.472Z">
@@ -97,14 +97,11 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给你一个 $n ^ 2$ 位的数 $k$ ，请你求出有多少个整数 $x \in [1, k]$ ，满足 $x$ 翻转或大于 $k$ 或翻转后大于等于它自己。 例如 <code>123</code> 翻转后为 <code>321</code> 。</p>
-<p>$$1 \leq n \leq 10 ^ 3, 2 | n$$</p>
-<a id="more"></a>
-
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>对于这类问题，我们考虑使用 **数位 DP ** 来解决。</p>
+<script type="math/tex; mode=display">1 \leq n \leq 10 ^ 3, 2 | n</script><a id="more"></a>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>对于这类问题，我们考虑使用 <strong>数位 DP </strong> 来解决。</p>
 <p>正难则反，考虑求出翻转后小于等于 $k$ ， <strong>小于</strong> 它自己的数的个数。</p>
 <p>所以如果设 $f(i)$ 表示 $i$ 翻转后的结果，那么答案 $ans=$</p>
-<p>$$k - \dfrac{\sum_{i = 1}^{k}[f(i) \leq k] - \sum_{i = 1}^{k}[f(i) = i]}{2}$$</p>
-<p>于是我们可以想到设 $f(i, p=0/1, q=0/1)$ 表示当前做到第 $i$ 位， $p$ 表示当前 小于/等于 $k$ 的前 $i$ 位，$q$ 表示将前 $i$ 位翻转后得到的后 $i$ 位 小于等于/大于 $k$ 的后 $i$ 位。</p>
+<script type="math/tex; mode=display">k - \dfrac{\sum_{i = 1}^{k}[f(i) \leq k] - \sum_{i = 1}^{k}[f(i) = i]}{2}</script><p>于是我们可以想到设 $f(i, p=0/1, q=0/1)$ 表示当前做到第 $i$ 位， $p$ 表示当前 小于/等于 $k$ 的前 $i$ 位，$q$ 表示将前 $i$ 位翻转后得到的后 $i$ 位 小于等于/大于 $k$ 的后 $i$ 位。</p>
 <p>于是我们就得到了一个时间复杂度为 $O(n ^ 2)$ 的做法，具体细节见代码部分。</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><ul>
 <li>易懂</li>
@@ -117,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/01/10/GMOJ-S3848/" data-id="ckk65p4dj000uaoav1vj35xw4" data-title="GMOJ S3848 【大水题】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/01/10/GMOJ-S3848/" data-id="ckk66hgey000urwavedoj77yz" data-title="GMOJ S3848 【大水题】" class="article-share-link">Share</a>
       
       
       

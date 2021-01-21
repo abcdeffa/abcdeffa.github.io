@@ -100,9 +100,7 @@
 <p>给你一个长度为 $n$ 的正整数序列 $a_1$ ~ $a_n$。</p>
 <p>有 $m$ 次询问，对于每次询问 $\text{query}(l, r)$，需要在子串 $a_l, a_{l + 1}, …, a_{r - 1}, a_{r}$ 中求出答案：对于每一个在子串内的不同的数 $x$，如果它在子串中出现了 $f(x)$ 次，那么答案为 $\sum x^{f(x)}$。</p>
 <p>由于这个答案可能很大，所以只需要求出答案对 $(10^9 + 7)$ 取模后的结果即可。</p>
-<p>$$1 \leq n; m \leq 10^5$$</p>
-<a id="more"></a>
-
+<script type="math/tex; mode=display">1 \leq n; m \leq 10^5</script><a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>发现因为是求 $x^{f(x)}$ 的和，所以我们可以发现我们难以合并块与块之间的贡献，所以线段树和分块做不了。</p>
 <p>于是我们考虑莫队。</p>
 <p>纪念一下写过的第一道莫队题，感觉还挺有趣的？比较喜欢这个题。</p>
@@ -111,7 +109,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/08/13/GMOJ-S3568/" data-id="ckk65p4d50009aoav0rr6b0em" data-title="GMOJ S3568 【小纪的作业题】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/08/13/GMOJ-S3568/" data-id="ckk66hgei0009rwavbmoaapzs" data-title="GMOJ S3568 【小纪的作业题】" class="article-share-link">Share</a>
       
       
       

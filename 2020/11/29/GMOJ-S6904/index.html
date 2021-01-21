@@ -6,12 +6,12 @@
   
   <title>GMOJ S6904 【树上询问】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description给你一棵有 $n$ 个点的树，给你 $m$ 个询问，每次问你对于一组给定的 $l_i$ 和 $r_i$，有多少个整数 $k$ 满足从点 $l_i$ 出发沿着从点 $l_i$ 到点 $r_i$ 的简单路径上走 $k$ 步恰好走到点 $k$。 $$1 \leq n, m \leq 3 \times 10^5$$ 单个测试点的时间限制为 3s。">
+  <meta name="description" content="Description给你一棵有 $n$ 个点的树，给你 $m$ 个询问，每次问你对于一组给定的 $l_i$ 和 $r_i$，有多少个整数 $k$ 满足从点 $l_i$ 出发沿着从点 $l_i$ 到点 $r_i$ 的简单路径上走 $k$ 步恰好走到点 $k$。 1 \leq n, m \leq 3 \times 10^5单个测试点的时间限制为 3s。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S6904 【树上询问】">
 <meta property="og:url" content="http://example.com/2020/11/29/GMOJ-S6904/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description给你一棵有 $n$ 个点的树，给你 $m$ 个询问，每次问你对于一组给定的 $l_i$ 和 $r_i$，有多少个整数 $k$ 满足从点 $l_i$ 出发沿着从点 $l_i$ 到点 $r_i$ 的简单路径上走 $k$ 步恰好走到点 $k$。 $$1 \leq n, m \leq 3 \times 10^5$$ 单个测试点的时间限制为 3s。">
+<meta property="og:description" content="Description给你一棵有 $n$ 个点的树，给你 $m$ 个询问，每次问你对于一组给定的 $l_i$ 和 $r_i$，有多少个整数 $k$ 满足从点 $l_i$ 出发沿着从点 $l_i$ 到点 $r_i$ 的简单路径上走 $k$ 步恰好走到点 $k$。 1 \leq n, m \leq 3 \times 10^5单个测试点的时间限制为 3s。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-29T10:14:44.000Z">
 <meta property="article:modified_time" content="2020-11-29T10:46:25.809Z">
@@ -97,17 +97,13 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给你一棵有 $n$ 个点的树，给你 $m$ 个询问，每次问你对于一组给定的 $l_i$ 和 $r_i$，有多少个整数 $k$ 满足从点 $l_i$ 出发沿着从点 $l_i$ 到点 $r_i$ 的简单路径上走 $k$ 步恰好走到点 $k$。</p>
-<p>$$1 \leq n, m \leq 3 \times 10^5$$</p>
-<p>单个测试点的时间限制为 3s。</p>
+<script type="math/tex; mode=display">1 \leq n, m \leq 3 \times 10^5</script><p>单个测试点的时间限制为 3s。</p>
 <a id="more"></a>
-
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>有趣但有些套路的题目，比赛的时候降智了没想出来，于是写篇题解来纪念一下。</p>
 <p>为了方便表述，在此令 $u = l_i, v = r_i, f = \text{lca}(u, v)$，其中 $\text{lca}(u, v)$ 表示的是点 $u$ 和点 $v$ 的最近公共祖先，下文提到的路径均为简单路径。</p>
 <p>考虑点 $k$ 在点 $u$ 到点 $f$ 这一段上的情况，设 $\text{dep} _i$ 表示点 $i$ 的深度，则合法的点 $k$ 需满足：</p>
-<p>$$\text{dep}_u - \text{dep}_k = k$$</p>
-<p>移项后可以得到：</p>
-<p>$$\text{dep}_u = k + \text{dep}_k$$</p>
-<p>于是式子的左边对于一个询问来说是定值，式子的右边本身就是一个定值。</p>
+<script type="math/tex; mode=display">\text{dep}_u - \text{dep}_k = k</script><p>移项后可以得到：</p>
+<script type="math/tex; mode=display">\text{dep}_u = k + \text{dep}_k</script><p>于是式子的左边对于一个询问来说是定值，式子的右边本身就是一个定值。</p>
 <p>于是问题转换为了求一段路径上点权（等于 $(k + \text{dep}_k)$）等于 $\text{dep}_u$ 的点的数量，将询问离线后用树上差分即可做到。</p>
 <p>对于点 $k$ 在点 $f$ 到点 $v$ 这一段上的情况，处理方法类似，就不在此赘述了。</p>
 <p>注意不能将点 $f$ 同时归在两种情况里面，随便归类到一种情况中即可。</p>
@@ -116,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/GMOJ-S6904/" data-id="ckk65p4el002maoavaps7bpr5" data-title="GMOJ S6904 【树上询问】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/GMOJ-S6904/" data-id="ckk66hggf002lrwavev0h2thu" data-title="GMOJ S6904 【树上询问】" class="article-share-link">Share</a>
       
       
       

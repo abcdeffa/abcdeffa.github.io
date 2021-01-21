@@ -6,12 +6,12 @@
   
   <title>GMOJ S3947 【收历史作业】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description给你一个 $n \times m$ 的地图，有 $k$ 个格子里有数，现在有一人从左上角出发，要走到右下角。现在请你求出在走的路程最短的情况下所经过的数的权值和最大是多少。 $$1 \leq n, m \leq 10^9, 1 \leq k \leq 10^5$$">
+  <meta name="description" content="Description给你一个 $n \times m$ 的地图，有 $k$ 个格子里有数，现在有一人从左上角出发，要走到右下角。现在请你求出在走的路程最短的情况下所经过的数的权值和最大是多少。 1 \leq n, m \leq 10^9, 1 \leq k \leq 10^5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S3947 【收历史作业】">
 <meta property="og:url" content="http://example.com/2020/01/09/GMOJ-S3947/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description给你一个 $n \times m$ 的地图，有 $k$ 个格子里有数，现在有一人从左上角出发，要走到右下角。现在请你求出在走的路程最短的情况下所经过的数的权值和最大是多少。 $$1 \leq n, m \leq 10^9, 1 \leq k \leq 10^5$$">
+<meta property="og:description" content="Description给你一个 $n \times m$ 的地图，有 $k$ 个格子里有数，现在有一人从左上角出发，要走到右下角。现在请你求出在走的路程最短的情况下所经过的数的权值和最大是多少。 1 \leq n, m \leq 10^9, 1 \leq k \leq 10^5">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-09T07:30:42.000Z">
 <meta property="article:modified_time" content="2020-01-09T07:46:13.295Z">
@@ -99,9 +99,7 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给你一个 $n \times m$ 的地图，有 $k$ 个格子里有数，现在有一人从左上角出发，要走到右下角。现在请你求出在走的路程最短的情况下所经过的数的权值和最大是多少。</p>
-<p>$$1 \leq n, m \leq 10^9, 1 \leq k \leq 10^5$$</p>
-<a id="more"></a>
-
+<script type="math/tex; mode=display">1 \leq n, m \leq 10^9, 1 \leq k \leq 10^5</script><a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>因为要求走的路程最短，所以只能够向下或向右走。</p>
 <p>所以对于两个坐标 $(a, b)$ 和 $(c, d)$ ，能够从 $(a, b)$ 走到 $(c, d)$ 的条件是 $c \geq a$ 且 $d \geq b$ 。</p>
 <p>考虑用 <strong>DP</strong> 来做，设 $f_{i, j}$ 表示当前做到位置 $(i, j)$ 时的最优解，这样我们就可以保证上文所说的 $c \geq a$ 的这个条件了，发现对于 $d \geq b$ 这个条件我们可以用 <strong>线段树</strong> 来维护，然后就可以进行转移了。</p>
@@ -113,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/01/09/GMOJ-S3947/" data-id="ckk65p4dq0014aoavcg2u9pb9" data-title="GMOJ S3947 【收历史作业】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/01/09/GMOJ-S3947/" data-id="ckk66hgf60014rwavfn7fazf5" data-title="GMOJ S3947 【收历史作业】" class="article-share-link">Share</a>
       
       
       

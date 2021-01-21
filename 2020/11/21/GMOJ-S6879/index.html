@@ -6,12 +6,12 @@
   
   <title>GMOJ S6879 【T1 出了个大阴间题】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description你有 $n$ 个二元组，你可以将 $(a_1, b_1)$ 与 $(a_2, b_2)$ 合并成： $$(a &#x3D; \max{a_1, a_2} + [a_1 &#x3D; a_2], b &#x3D; 2\max{b_1, b_2} + 1)$$ ，需要的花费为 $ka + b_1 + b_2$。 现在你有 $n$ 个二元组 $(a_1, 0), (a_2, 0), . . . ,(a_n, 0">
+  <meta name="description" content="Description你有 $n$ 个二元组，你可以将 $(a_1, b_1)$ 与 $(a_2, b_2)$ 合并成： (a &#x3D; \max\{a_1, a_2\} + [a_1 &#x3D; a_2], b &#x3D; 2\max\{b_1, b_2\} + 1)，需要的花费为 $ka + b_1 + b_2$。 现在你有 $n$ 个二元组 $(a_1, 0), (a_2, 0), . . . ,(a_n, 0)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S6879 【T1 出了个大阴间题】">
 <meta property="og:url" content="http://example.com/2020/11/21/GMOJ-S6879/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description你有 $n$ 个二元组，你可以将 $(a_1, b_1)$ 与 $(a_2, b_2)$ 合并成： $$(a &#x3D; \max{a_1, a_2} + [a_1 &#x3D; a_2], b &#x3D; 2\max{b_1, b_2} + 1)$$ ，需要的花费为 $ka + b_1 + b_2$。 现在你有 $n$ 个二元组 $(a_1, 0), (a_2, 0), . . . ,(a_n, 0">
+<meta property="og:description" content="Description你有 $n$ 个二元组，你可以将 $(a_1, b_1)$ 与 $(a_2, b_2)$ 合并成： (a &#x3D; \max\{a_1, a_2\} + [a_1 &#x3D; a_2], b &#x3D; 2\max\{b_1, b_2\} + 1)，需要的花费为 $ka + b_1 + b_2$。 现在你有 $n$ 个二元组 $(a_1, 0), (a_2, 0), . . . ,(a_n, 0)">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-21T08:09:02.000Z">
 <meta property="article:modified_time" content="2020-11-24T23:55:58.281Z">
@@ -98,14 +98,11 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>你有 $n$ 个二元组，你可以将 $(a_1, b_1)$ 与 $(a_2, b_2)$ 合并成：</p>
-<p>$$(a = \max{a_1, a_2} + [a_1 = a_2], b = 2\max{b_1, b_2} + 1)$$</p>
-<p>，需要的花费为 $ka + b_1 + b_2$。</p>
+<script type="math/tex; mode=display">(a = \max\{a_1, a_2\} + [a_1 = a_2], b = 2\max\{b_1, b_2\} + 1)</script><p>，需要的花费为 $ka + b_1 + b_2$。</p>
 <p>现在你有 $n$ 个二元组 $(a_1, 0), (a_2, 0), . . . ,(a_n, 0)$，你需要按照一个排列 $p_1, p_2, p_3, . . . , p_n$ 的顺序合并，就是先将 $(a_{p_1} , 0)$ 与 $(a_{p_2} , 0)$ 合并，再将所得结果与 $(a_{p_3} , 0)$ 合并，以此类推。</p>
 <p>你希望最后结果 $(a, b)$ 中 $a$ 最大，并希望求出在 $a$ 最大的条件下所有合法排列的合并代价总和对 $(10^9 + 7)$ 取模后的结果。</p>
-<p>$$1 \leq n \leq 18, 1 \leq a_i \leq 10^9$$</p>
-<p>时间限制 2s，空间限制 512MB。</p>
+<script type="math/tex; mode=display">1 \leq n \leq 18, 1 \leq a_i \leq 10^9</script><p>时间限制 2s，空间限制 512MB。</p>
 <a id="more"></a>
-
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>看到 $n$ 这么小，考虑状压 DP。</p>
 <p>设 $f_{S, i}$ 表示当前已经合并了的状态为 $S$，结果的 $a$ 值为 $i$ 的代价和。</p>
 <p>因为 $1 \leq a_i \leq 10^9$，于是我们考虑把所有可能合并出来的数求出来，然后按照这个对 $a_i$ 进行离散化即可，由于显然这些数的总数小于 $2n$，然后暴力转移即可。</p>
@@ -115,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/21/GMOJ-S6879/" data-id="ckk65p4eh002aaoavh6tl855e" data-title="GMOJ S6879 【T1 出了个大阴间题】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/21/GMOJ-S6879/" data-id="ckk66hggb002drwav7g2i5t2p" data-title="GMOJ S6879 【T1 出了个大阴间题】" class="article-share-link">Share</a>
       
       
       

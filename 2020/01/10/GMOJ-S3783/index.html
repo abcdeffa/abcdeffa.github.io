@@ -6,12 +6,12 @@
   
   <title>GMOJ S3783 【签到题】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description给你一个数 $n$ 和 $n$ 个数 $a_1$ ~ $a_n$ ，现在请你求出这 $n$ 个数的一个非空子集，使得这个子集中的数的和能被 $n$ 整除，无解输出 -1 ，共有 $T$ 组数据。 下文将用 $|x|$ 来表示 $x$ 的绝对值。 $$1 \leq T \leq 10, 1 \leq n \leq 10 ^ 5, 1 \leq |a_i| \leq 10 ^ 9">
+  <meta name="description" content="Description给你一个数 $n$ 和 $n$ 个数 $a_1$ ~ $a_n$ ，现在请你求出这 $n$ 个数的一个非空子集，使得这个子集中的数的和能被 $n$ 整除，无解输出 -1 ，共有 $T$ 组数据。 下文将用 $|x|$ 来表示 $x$ 的绝对值。 1 \leq T \leq 10, 1 \leq n \leq 10 ^ 5, 1 \leq |a_i| \leq 10 ^ 9">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S3783 【签到题】">
 <meta property="og:url" content="http://example.com/2020/01/10/GMOJ-S3783/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description给你一个数 $n$ 和 $n$ 个数 $a_1$ ~ $a_n$ ，现在请你求出这 $n$ 个数的一个非空子集，使得这个子集中的数的和能被 $n$ 整除，无解输出 -1 ，共有 $T$ 组数据。 下文将用 $|x|$ 来表示 $x$ 的绝对值。 $$1 \leq T \leq 10, 1 \leq n \leq 10 ^ 5, 1 \leq |a_i| \leq 10 ^ 9">
+<meta property="og:description" content="Description给你一个数 $n$ 和 $n$ 个数 $a_1$ ~ $a_n$ ，现在请你求出这 $n$ 个数的一个非空子集，使得这个子集中的数的和能被 $n$ 整除，无解输出 -1 ，共有 $T$ 组数据。 下文将用 $|x|$ 来表示 $x$ 的绝对值。 1 \leq T \leq 10, 1 \leq n \leq 10 ^ 5, 1 \leq |a_i| \leq 10 ^ 9">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-10T07:39:07.000Z">
 <meta property="article:modified_time" content="2020-01-10T23:47:47.026Z">
@@ -99,9 +99,7 @@
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给你一个数 $n$ 和 $n$ 个数 $a_1$ ~ $a_n$ ，现在请你求出这 $n$ 个数的一个非空子集，使得这个子集中的数的和能被 $n$ 整除，无解输出 <code>-1</code> ，共有 $T$ 组数据。</p>
 <p>下文将用 $|x|$ 来表示 $x$ 的绝对值。</p>
-<p>$$1 \leq T \leq 10, 1 \leq n \leq 10 ^ 5, 1 \leq |a_i| \leq 10 ^ 9$$</p>
-<a id="more"></a>
-
+<script type="math/tex; mode=display">1 \leq T \leq 10, 1 \leq n \leq 10 ^ 5, 1 \leq |a_i| \leq 10 ^ 9</script><a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>设 $s_i$ 表示 $(\sum_{j = 1} ^ i a_i) \mod n$ ，那么 $s_i$ 的取值范围为 $[0, n)$ 。</p>
 <p>所以我们可以用鸽巢原理证明出在 $s_1$ ~ $s_n$ 中至少有两个是相同的。</p>
 <p>因此至少存在一段连续的数满足要求。</p>
@@ -112,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/01/10/GMOJ-S3783/" data-id="ckk65p4db000iaoav2mklecvk" data-title="GMOJ S3783 【签到题】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/01/10/GMOJ-S3783/" data-id="ckk66hget000irwavabll5v0b" data-title="GMOJ S3783 【签到题】" class="article-share-link">Share</a>
       
       
       

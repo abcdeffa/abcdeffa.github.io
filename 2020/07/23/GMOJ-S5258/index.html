@@ -6,12 +6,12 @@
   
   <title>GMOJ S5258 【友好数对】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description定义一个数 $S$ 在二进制下数值为 1 的位数的个数为 $cnt(S)$。 现在给出你两组数 ${a_1,a_2,…,a_n}$ 和 ${b_1,b_2,…,b_m}$。 请你求出 $\sum_{i &#x3D; 1} ^ {n} \sum_{j &#x3D; 1} ^ {m} [cnt(a_i ⊕ b_j) &#x3D; 2]$ 的值。 $$1 \leq n, m \leq 10^5, 0 \leq">
+  <meta name="description" content="Description定义一个数 $S$ 在二进制下数值为 1 的位数的个数为 $cnt(S)$。 现在给出你两组数 $\{a_1,a_2,…,a_n\}$ 和 $\{b_1,b_2,…,b_m\}$。 请你求出 $\sum_{i &#x3D; 1} ^ {n} \sum_{j &#x3D; 1} ^ {m} [cnt(a_i ⊕ b_j) &#x3D; 2]$ 的值。 1 \leq n, m \leq 10^5, 0 \le">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S5258 【友好数对】">
 <meta property="og:url" content="http://example.com/2020/07/23/GMOJ-S5258/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description定义一个数 $S$ 在二进制下数值为 1 的位数的个数为 $cnt(S)$。 现在给出你两组数 ${a_1,a_2,…,a_n}$ 和 ${b_1,b_2,…,b_m}$。 请你求出 $\sum_{i &#x3D; 1} ^ {n} \sum_{j &#x3D; 1} ^ {m} [cnt(a_i ⊕ b_j) &#x3D; 2]$ 的值。 $$1 \leq n, m \leq 10^5, 0 \leq">
+<meta property="og:description" content="Description定义一个数 $S$ 在二进制下数值为 1 的位数的个数为 $cnt(S)$。 现在给出你两组数 $\{a_1,a_2,…,a_n\}$ 和 $\{b_1,b_2,…,b_m\}$。 请你求出 $\sum_{i &#x3D; 1} ^ {n} \sum_{j &#x3D; 1} ^ {m} [cnt(a_i ⊕ b_j) &#x3D; 2]$ 的值。 1 \leq n, m \leq 10^5, 0 \le">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-23T08:40:14.000Z">
 <meta property="article:modified_time" content="2020-11-24T23:59:45.862Z">
@@ -98,11 +98,9 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><p>定义一个数 $S$ 在二进制下数值为 1 的位数的个数为 $cnt(S)$。</p>
-<p>现在给出你两组数 ${a_1,a_2,…,a_n}$ 和 ${b_1,b_2,…,b_m}$。</p>
+<p>现在给出你两组数 $\{a_1,a_2,…,a_n\}$ 和 $\{b_1,b_2,…,b_m\}$。</p>
 <p>请你求出 $\sum_{i = 1} ^ {n} \sum_{j = 1} ^ {m} [cnt(a_i ⊕ b_j) = 2]$ 的值。</p>
-<p>$$1 \leq n, m \leq 10^5, 0 \leq a_i, b_i &lt; 2^{30}$$</p>
-<a id="more"></a>
-
+<script type="math/tex; mode=display">1 \leq n, m \leq 10^5, 0 \leq a_i, b_i < 2^{30}</script><a id="more"></a>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>考虑一个比较暴力的做法：先把 $b_j$ 放进哈希表里，然后暴力枚举 $a_i$ 改了哪两位，再到哈希表里找，统计个数和即可。</p>
 <p>但这样有一个 900 的常数，想要卡过去有点难度，考虑进行卡常。</p>
 <p>优化：把 $b_j$ 改一位的结果丢进哈希表里，然后暴力枚举 $a_i$ 改了哪一位，再到哈希表里找，统计个数和，最后减去 $a_i = b_j$ 的情况再除 2 即可。</p>
@@ -112,7 +110,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/07/23/GMOJ-S5258/" data-id="ckk65p4ea001zaoavb6tr9r97" data-title="GMOJ S5258 【友好数对】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/07/23/GMOJ-S5258/" data-id="ckk66hgfz001zrwav7g53fy1l" data-title="GMOJ S5258 【友好数对】" class="article-share-link">Share</a>
       
       
       

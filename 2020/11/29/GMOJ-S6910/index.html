@@ -6,12 +6,12 @@
   
   <title>GMOJ S6910 【卡特兰数】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description有 $n$ 个数，为 $1$ ~ $m$，依次将它们入栈，有 $m$ 个约束条件，每个约束条件形如 $f_i$ 不能晚于 $g_i$ 出栈，求合法的出栈序列数，答案模 $998244353$。 $$1 \leq n \leq 300, 1 \leq m \leq \dfrac{n(n - 1)}{2}$$">
+  <meta name="description" content="Description有 $n$ 个数，为 $1$ ~ $m$，依次将它们入栈，有 $m$ 个约束条件，每个约束条件形如 $f_i$ 不能晚于 $g_i$ 出栈，求合法的出栈序列数，答案模 $998244353$。 1 \leq n \leq 300, 1 \leq m \leq \dfrac{n(n - 1)}{2}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S6910 【卡特兰数】">
 <meta property="og:url" content="http://example.com/2020/11/29/GMOJ-S6910/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description有 $n$ 个数，为 $1$ ~ $m$，依次将它们入栈，有 $m$ 个约束条件，每个约束条件形如 $f_i$ 不能晚于 $g_i$ 出栈，求合法的出栈序列数，答案模 $998244353$。 $$1 \leq n \leq 300, 1 \leq m \leq \dfrac{n(n - 1)}{2}$$">
+<meta property="og:description" content="Description有 $n$ 个数，为 $1$ ~ $m$，依次将它们入栈，有 $m$ 个约束条件，每个约束条件形如 $f_i$ 不能晚于 $g_i$ 出栈，求合法的出栈序列数，答案模 $998244353$。 1 \leq n \leq 300, 1 \leq m \leq \dfrac{n(n - 1)}{2}">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-29T10:14:44.000Z">
 <meta property="article:modified_time" content="2020-12-02T13:23:56.333Z">
@@ -98,14 +98,11 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>有 $n$ 个数，为 $1$ ~ $m$，依次将它们入栈，有 $m$ 个约束条件，每个约束条件形如 $f_i$ 不能晚于 $g_i$ 出栈，求合法的出栈序列数，答案模 $998244353$。</p>
-<p>$$1 \leq n \leq 300, 1 \leq m \leq \dfrac{n(n - 1)}{2}$$</p>
-<a id="more"></a>
-
+<script type="math/tex; mode=display">1 \leq n \leq 300, 1 \leq m \leq \dfrac{n(n - 1)}{2}</script><a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>显得经典但有趣的题目。</p>
 <p>考虑区间 DP，设 $f_{i, j}$ 表示区间 $[i, j]$ 内的数均已出栈的合法方案数。</p>
 <p>考虑怎么转移，设 $k$ 在 $[l, k - 1]$ 出去后再出去 $[k + 1, r]$ 再出去 $k$ 是合法的，则有：</p>
-<p>$$f_{i}{j} = \sum (f_{l, k - 1} \times f_{k + 1, r}) + A$$</p>
-<p>，其中 $A$ 表示的是当前最后进的点是 $l$ 或 $r$ 的方案数。</p>
+<script type="math/tex; mode=display">f_{i}{j} = \sum (f_{l, k - 1} \times f_{k + 1, r}) + A</script><p>，其中 $A$ 表示的是当前最后进的点是 $l$ 或 $r$ 的方案数。</p>
 <p>这样直接 DP，暴力判断是否符合每个约束条件的话，时间复杂度是 $O(n^3m)$ 的，考虑优化。</p>
 <p>发现当 $k \leq f_i \leq r \and l \leq g_i &lt; k$ 或者 $f_i = k \ans k &lt; g_i &lt; r$ 时转移不合法。</p>
 <p>于是我们考虑到把一个约束条件看成一个点 $(f_i, g_i)$，发现我们只需要判断矩形内有没有点就可以快速地判断转移合不合法了。</p>
@@ -115,7 +112,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2020/11/29/GMOJ-S6910/" data-id="ckk65p4en002paoav62iv46ld" data-title="GMOJ S6910 【卡特兰数】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2020/11/29/GMOJ-S6910/" data-id="ckk66hggh002orwavcmvr1jnb" data-title="GMOJ S6910 【卡特兰数】" class="article-share-link">Share</a>
       
       
       

@@ -6,12 +6,12 @@
   
   <title>GMOJ S3799 【青蛙神】 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Description给你一个有 $n$ 个节点， $m$ 条边的 DAG 。 要求你在途中选择一条路径，可以只包含一个点，求有多少条路径满足路径上的点的编号积为平方数。 $$1 \leq n \leq 90, 1 \leq m \leq 8 \times 10^3$$">
+  <meta name="description" content="Description给你一个有 $n$ 个节点， $m$ 条边的 DAG 。 要求你在途中选择一条路径，可以只包含一个点，求有多少条路径满足路径上的点的编号积为平方数。 1 \leq n \leq 90, 1 \leq m \leq 8 \times 10^3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GMOJ S3799 【青蛙神】">
 <meta property="og:url" content="http://example.com/2019/12/28/GMOJ-S3799/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Description给你一个有 $n$ 个节点， $m$ 条边的 DAG 。 要求你在途中选择一条路径，可以只包含一个点，求有多少条路径满足路径上的点的编号积为平方数。 $$1 \leq n \leq 90, 1 \leq m \leq 8 \times 10^3$$">
+<meta property="og:description" content="Description给你一个有 $n$ 个节点， $m$ 条边的 DAG 。 要求你在途中选择一条路径，可以只包含一个点，求有多少条路径满足路径上的点的编号积为平方数。 1 \leq n \leq 90, 1 \leq m \leq 8 \times 10^3">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2019-12-28T08:29:25.000Z">
 <meta property="article:modified_time" content="2020-01-08T11:03:06.214Z">
@@ -99,9 +99,7 @@
       
         <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给你一个有 $n$ 个节点， $m$ 条边的 DAG 。</p>
 <p>要求你在途中选择一条路径，可以只包含一个点，求有多少条路径满足路径上的点的编号积为平方数。</p>
-<p>$$1 \leq n \leq 90, 1 \leq m \leq 8 \times 10^3$$</p>
-<a id="more"></a>
-
+<script type="math/tex; mode=display">1 \leq n \leq 90, 1 \leq m \leq 8 \times 10^3</script><a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>发现一个数若是完全平方数则它的每一个质因子的次数都是偶数。</p>
 <p>于是我们可以对于每一个数分解质因数，然后 <strong>状压 DP</strong> 即可。</p>
 <p>但是 90 以内的质数有 24 个，但是不要紧，因为因子里含有大于 45 的质数的数最多只有一个，就是它本身。</p>
@@ -115,7 +113,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2019/12/28/GMOJ-S3799/" data-id="ckk65p4de000naoav2unihkar" data-title="GMOJ S3799 【青蛙神】" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2019/12/28/GMOJ-S3799/" data-id="ckk66hgev000nrwavhu4p1vma" data-title="GMOJ S3799 【青蛙神】" class="article-share-link">Share</a>
       
       
       
