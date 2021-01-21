@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>GMOJ S6893 【小 T 与灵石】 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Description给你一棵有 $n$ 个点的树，边权均为 1。再给你 $m$ 个点集，第 $i$ 个点集有 $k_i$ 个点，定义 $f_{x, i}$ 表示点 $x$ 到第 $i$ 个点集中所有点的最大距离。 定义 $g_x$ 表示 $\min_{i &#x3D; 1}^{m} f_{x, i}$，试求 $g_1$ ~ $g_n$。 $$1 \leq n, q \leq 3 \times 10^5,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GMOJ S6893 【小 T 与灵石】">
+<meta property="og:url" content="http://example.com/2020/11/26/GMOJ-S6893/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Description给你一棵有 $n$ 个点的树，边权均为 1。再给你 $m$ 个点集，第 $i$ 个点集有 $k_i$ 个点，定义 $f_{x, i}$ 表示点 $x$ 到第 $i$ 个点集中所有点的最大距离。 定义 $g_x$ 表示 $\min_{i &#x3D; 1}^{m} f_{x, i}$，试求 $g_1$ ~ $g_n$。 $$1 \leq n, q \leq 3 \times 10^5,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-25T23:11:09.000Z">
+<meta property="article:modified_time" content="2020-11-26T07:43:07.191Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="换根DP">
+<meta property="article:tag" content="树的直径">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="树型DP">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-GMOJ-S6893" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/11/26/GMOJ-S6893/" class="article-date">
+  <time class="dt-published" datetime="2020-11-25T23:11:09.000Z" itemprop="datePublished">2020-11-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      GMOJ S6893 【小 T 与灵石】
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给你一棵有 $n$ 个点的树，边权均为 1。再给你 $m$ 个点集，第 $i$ 个点集有 $k_i$ 个点，定义 $f_{x, i}$ 表示点 $x$ 到第 $i$ 个点集中所有点的最大距离。</p>
+<p>定义 $g_x$ 表示 $\min_{i = 1}^{m} f_{x, i}$，试求 $g_1$ ~ $g_n$。</p>
+<p>$$1 \leq n, q \leq 3 \times 10^5, \sum{k_i} \leq 10^6$$</p>
+<a id="more"></a>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>发现对于一个点集，如果我们称其中距离最远的点对为这个点集的直径的两端，那么一个点到这个点集中所有点的最大距离一定是到中点的距离加上直径长度的一半。</p>
+<p>对于中点在一个点上的情况，我们把直径的长度 $d$ 的一半当作这个点的点权，如果有多次赋值则取最小值，并标记一下它。</p>
+<p>对于中点在一条边上的情况，我们把 $\lceil \dfrac{2}{d} \rceil$ 给到中点所在的边的两端的点，并标记一下它们。</p>
+<p>然后我们考虑怎么求出一个点集的直径。</p>
+<p>当 $k = 1$ 时，直径退化为一个点。</p>
+<p>当 $k \geq 2$ 时，考虑先钦定点集中的前两个数为直径的两端 $l$ 和 $r$，然后看对于一个新点 $x$，它能否成为当前直径的其中一段，这个看一下 $x$ 到 $l$ 和 $r$ 的距离比不比当前直径优就好了。</p>
+<p>然后问题就转化为了求所有点到标记点的最短距离，这个可以用换根 DP 或最短路算法（如 SPFA）解决。</p>
+<p>求解树上两点间距离建议采用树链剖分而非倍增 LCA，因为前者在实际表现上更优秀（如对于一条链的情况），而后者我卡不过去。</p>
+<p>由于 OJ 的系统栈较小，应采用 BFS 而非 DFS。</p>
+<p>官方题解提供了一种新建点然后连向直径中点，边权为 $\dfrac{d}{2}$ 的做法，并为了避免小数，将边权乘 2。若在边上则拆去原有边，再开一个新点，建两条边权为 1 的边，连向刚刚删除边的两端即可。</p>
+<p>我试着写了一下这种做法，但感觉比较复杂？</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxN 900010</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span> <span class="keyword">int</span> x, y, g; &#125; b[maxN &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> len = <span class="number">1</span>, n = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> f[maxN][<span class="number">20</span>];</span><br><span class="line"><span class="keyword">int</span> top[maxN], size[maxN], son[maxN], val[maxN], dep[maxN], dl[maxN], fa[maxN], h[maxN], d[maxN], v[maxN], a[maxN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> c = getchar();</span><br><span class="line">	<span class="keyword">while</span>(c &lt; <span class="string">&#x27;0&#x27;</span> || c &gt; <span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(c &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; c &lt;= <span class="string">&#x27;9&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		x = x * <span class="number">10</span> + (c - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">		c = getchar();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">min</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x &lt; y ? x : y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ins</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	len++;</span><br><span class="line">	b[len].x = x;</span><br><span class="line">	b[len].y = y;</span><br><span class="line">	b[len].g = h[x];</span><br><span class="line">	h[x] = len;</span><br><span class="line">	len++;</span><br><span class="line">	b[len].x = y;</span><br><span class="line">	b[len].y = x;</span><br><span class="line">	b[len].g = h[y];</span><br><span class="line">	h[y] = len;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span> <span class="params">(<span class="keyword">int</span> S)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> head = <span class="number">1</span>, tail = <span class="number">2</span>;</span><br><span class="line">	dl[head] = S;</span><br><span class="line">	<span class="keyword">while</span>(head &lt; tail)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x = dl[head++];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = h[x];i;i = b[i].g)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> y = b[i].y;</span><br><span class="line">			<span class="keyword">if</span>(!dep[y])</span><br><span class="line">			&#123;</span><br><span class="line">				fa[y] = x;</span><br><span class="line">				f[y][<span class="number">0</span>] = x;</span><br><span class="line">				dep[y] = dep[x] + <span class="number">1</span>;</span><br><span class="line">				dl[tail++] = y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = tail - <span class="number">1</span>;i &gt; <span class="number">1</span>; i--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x = dl[i];</span><br><span class="line">		size[x]++;</span><br><span class="line">		size[fa[x]] += size[x];</span><br><span class="line">		<span class="keyword">if</span>(size[x] &gt; size[son[fa[x]]])</span><br><span class="line">		&#123;</span><br><span class="line">			son[fa[x]] = x;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dis</span> <span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> X = x, Y = y;</span><br><span class="line">	<span class="keyword">while</span>(top[x] != top[y])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(dep[top[x]] &lt; dep[top[y]])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t = x;</span><br><span class="line">			x = y;</span><br><span class="line">			y = t;</span><br><span class="line">		&#125;</span><br><span class="line">		x = fa[top[x]];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(dep[x] &gt; dep[y])</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> t = x;</span><br><span class="line">		x = y;</span><br><span class="line">		y = t;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> dep[X] + dep[Y] - <span class="number">2</span> * dep[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bfs</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> head = <span class="number">1</span>, tail = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= cnt; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		d[i] = val[i], v[i] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span>(val[i] &lt; <span class="number">707406378</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			dl[tail++] = i, v[i] = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(head &lt; tail)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x = dl[head++];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = h[x];i;i = b[i].g)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> y = b[i].y;</span><br><span class="line">			<span class="keyword">if</span>(d[x] + <span class="number">1</span> &lt; d[y])</span><br><span class="line">			&#123;</span><br><span class="line">				d[y] = d[x] + <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">if</span>(!v[y])</span><br><span class="line">				&#123;</span><br><span class="line">					v[y] = <span class="number">1</span>;</span><br><span class="line">					dl[tail++] = y;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		v[x] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span> <span class="params">(<span class="keyword">int</span> S)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> head = <span class="number">1</span>, tail = <span class="number">2</span>;</span><br><span class="line">	dl[head] = S;</span><br><span class="line">	<span class="keyword">while</span>(head &lt; tail)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> x = dl[head++];</span><br><span class="line">		<span class="keyword">if</span>(son[x])</span><br><span class="line">		&#123;</span><br><span class="line">			top[son[x]] = top[x];</span><br><span class="line">			dl[tail++] = son[x];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = h[x];i;i = b[i].g)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> y = b[i].y;</span><br><span class="line">			<span class="keyword">if</span>(y != son[x] &amp;&amp; dep[y] == dep[x] + <span class="number">1</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				top[y] = y;</span><br><span class="line">				dl[tail++] = y;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cnt = n = read();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ins(read(), i);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> root = <span class="number">1</span>;</span><br><span class="line">	dep[root] = <span class="number">1</span>;</span><br><span class="line">	work(root);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j &lt;= <span class="number">19</span>; j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			f[i][j] = f[f[i][j - <span class="number">1</span>]][j - <span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	top[root] = root;</span><br><span class="line">	solve(root);</span><br><span class="line">	<span class="built_in">memset</span>(val, <span class="number">127</span> / <span class="number">3</span>, <span class="keyword">sizeof</span>(val));</span><br><span class="line">	<span class="keyword">int</span> Q = read();</span><br><span class="line">	<span class="keyword">while</span>(Q--)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> k = read(), D = <span class="number">0</span>, l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= k; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			a[i] = read();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(k == <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			val[a[<span class="number">1</span>]] = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		D = dis(a[<span class="number">1</span>], a[<span class="number">2</span>]), l = a[<span class="number">1</span>], r = a[<span class="number">2</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>;i &lt;= k; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> ll = l, rr = r; </span><br><span class="line">			<span class="keyword">int</span> now = dis(l, a[i]);</span><br><span class="line">			<span class="keyword">if</span>(now &gt; D)</span><br><span class="line">			&#123;</span><br><span class="line">				D = now;</span><br><span class="line">				ll = l;</span><br><span class="line">				rr = a[i];</span><br><span class="line">			&#125;</span><br><span class="line">			now = dis(a[i], r);</span><br><span class="line">			<span class="keyword">if</span>(now &gt; D)</span><br><span class="line">			&#123;</span><br><span class="line">				D = now;</span><br><span class="line">				ll = a[i];</span><br><span class="line">				rr = r;</span><br><span class="line">			&#125;</span><br><span class="line">			l = ll, r = rr;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(dep[l] &lt; dep[r])</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> t = l;</span><br><span class="line">			l = r;</span><br><span class="line">			r = t;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">int</span> Dist = D / <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">19</span>;i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(f[l][i] &amp;&amp; res + (<span class="number">1</span> &lt;&lt; i) &lt;= Dist)</span><br><span class="line">			&#123;</span><br><span class="line">				res += (<span class="number">1</span> &lt;&lt; i);</span><br><span class="line">				l = f[l][i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(D &amp; <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			val[l] = min(val[l], (D + <span class="number">1</span>) / <span class="number">2</span>);</span><br><span class="line">			val[fa[l]] = min(val[fa[l]], (D + <span class="number">1</span>) / <span class="number">2</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			val[l] = min(val[l], D / <span class="number">2</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	bfs();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, d[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2020/11/26/GMOJ-S6893/" data-id="ckk65p4el002kaoavfotnhale" data-title="GMOJ S6893 【小 T 与灵石】" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8D%A2%E6%A0%B9DP/" rel="tag">换根DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E5%9E%8BDP/" rel="tag">树型DP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" rel="tag">树的直径</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/26/GMOJ-S5391/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          GMOJ S5391 【卡常题】
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/25/GMOJ-S6891/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">GMOJ S6891 【太空漫步】</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/BFS/" rel="tag">BFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/" rel="tag">DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LCA/" rel="tag">LCA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RMQ/" rel="tag">RMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exgcd/" rel="tag">exgcd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/test/" rel="tag">test</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" rel="tag">乘法逆元</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/" rel="tag">二分图匹配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BB%99%E4%BA%BA%E6%8E%8C/" rel="tag">仙人掌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8D%E5%A2%9E/" rel="tag">倍增</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8C%BA%E9%97%B4DP/" rel="tag">区间DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96/" rel="tag">可持久化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%93%88%E5%B8%8C/" rel="tag">哈希</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%8E%AF%E6%A0%91/" rel="tag">基环树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91/" rel="tag">字典树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag">快速幂</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag">找规律</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8D%A2%E6%A0%B9DP/" rel="tag">换根DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2/" rel="tag">搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E4%BD%8DDP/" rel="tag">数位DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/" rel="tag">斜率优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%AF%E5%9D%A6%E7%BA%B3%E6%A0%91/" rel="tag">斯坦纳树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" rel="tag">最近公共祖先</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%9F%E6%9C%9B/" rel="tag">期望</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86/" rel="tag">树上差分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E5%9E%8BDP/" rel="tag">树型DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E5%BD%A2DP/" rel="tag">树形DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E5%8D%8A%E5%BE%84/" rel="tag">树的半径</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" rel="tag">树的直径</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" rel="tag">树链剖分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A1%B6/" rel="tag">桶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E7%8E%87DP/" rel="tag">概率DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E8%AE%B0/" rel="tag">游记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8A%B6%E5%8E%8BDP/" rel="tag">状压DP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/" rel="tag">离散化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag">线段树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag">网络流</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8E%AB%E9%98%9F/" rel="tag">莫队</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" rel="tag">记忆化搜索</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag">贪心</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%92%E6%8E%A8/" rel="tag">递推</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="tag">高精度</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BFS/" style="font-size: 13.33px;">BFS</a> <a href="/tags/DFS/" style="font-size: 10px;">DFS</a> <a href="/tags/DP/" style="font-size: 20px;">DP</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/exgcd/" style="font-size: 10px;">exgcd</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83/" style="font-size: 10px;">乘法逆元</a> <a href="/tags/%E4%BA%8C%E5%88%86%E5%9B%BE%E5%8C%B9%E9%85%8D/" style="font-size: 10px;">二分图匹配</a> <a href="/tags/%E4%BB%99%E4%BA%BA%E6%8E%8C/" style="font-size: 10px;">仙人掌</a> <a href="/tags/%E5%80%8D%E5%A2%9E/" style="font-size: 11.67px;">倍增</a> <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" style="font-size: 10px;">前缀和</a> <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" style="font-size: 13.33px;">动态规划</a> <a href="/tags/%E5%8C%BA%E9%97%B4DP/" style="font-size: 10px;">区间DP</a> <a href="/tags/%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96/" style="font-size: 10px;">可持久化</a> <a href="/tags/%E5%93%88%E5%B8%8C/" style="font-size: 10px;">哈希</a> <a href="/tags/%E5%9F%BA%E7%8E%AF%E6%A0%91/" style="font-size: 10px;">基环树</a> <a href="/tags/%E5%AD%97%E5%85%B8%E6%A0%91/" style="font-size: 11.67px;">字典树</a> <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" style="font-size: 10px;">并查集</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" style="font-size: 11.67px;">快速幂</a> <a href="/tags/%E6%89%BE%E8%A7%84%E5%BE%8B/" style="font-size: 10px;">找规律</a> <a href="/tags/%E6%8D%A2%E6%A0%B9DP/" style="font-size: 11.67px;">换根DP</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%90%9C%E7%B4%A2/" style="font-size: 10px;">搜索</a> <a href="/tags/%E6%95%B0%E4%BD%8DDP/" style="font-size: 10px;">数位DP</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/" style="font-size: 10px;">斜率优化</a> <a href="/tags/%E6%96%AF%E5%9D%A6%E7%BA%B3%E6%A0%91/" style="font-size: 10px;">斯坦纳树</a> <a href="/tags/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/" style="font-size: 10px;">最近公共祖先</a> <a href="/tags/%E6%9C%9F%E6%9C%9B/" style="font-size: 10px;">期望</a> <a href="/tags/%E6%A0%91%E4%B8%8A%E5%B7%AE%E5%88%86/" style="font-size: 10px;">树上差分</a> <a href="/tags/%E6%A0%91%E5%9E%8BDP/" style="font-size: 10px;">树型DP</a> <a href="/tags/%E6%A0%91%E5%BD%A2DP/" style="font-size: 15px;">树形DP</a> <a href="/tags/%E6%A0%91%E7%9A%84%E5%8D%8A%E5%BE%84/" style="font-size: 10px;">树的半径</a> <a href="/tags/%E6%A0%91%E7%9A%84%E7%9B%B4%E5%BE%84/" style="font-size: 11.67px;">树的直径</a> <a href="/tags/%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" style="font-size: 11.67px;">树链剖分</a> <a href="/tags/%E6%A1%B6/" style="font-size: 10px;">桶</a> <a href="/tags/%E6%A6%82%E7%8E%87DP/" style="font-size: 10px;">概率DP</a> <a href="/tags/%E6%B8%B8%E8%AE%B0/" style="font-size: 11.67px;">游记</a> <a href="/tags/%E7%8A%B6%E5%8E%8BDP/" style="font-size: 15px;">状压DP</a> <a href="/tags/%E7%A6%BB%E6%95%A3%E5%8C%96/" style="font-size: 16.67px;">离散化</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 18.33px;">线段树</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" style="font-size: 13.33px;">网络流</a> <a href="/tags/%E8%8E%AB%E9%98%9F/" style="font-size: 10px;">莫队</a> <a href="/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/" style="font-size: 10px;">记忆化搜索</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 11.67px;">贪心</a> <a href="/tags/%E9%80%92%E6%8E%A8/" style="font-size: 10px;">递推</a> <a href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" style="font-size: 10px;">高精度</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/12/02/GMOJ-S6916/">GMOJ S6916 【牧羊人】</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/29/GMOJ-S6904/">GMOJ S6904 【树上询问】</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/29/GMOJ-S6910/">GMOJ S6910 【卡特兰数】</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/27/GMOJ-S5390/">GMOJ S5390 【逗气】</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/26/GMOJ-S5391/">GMOJ S5391 【卡常题】</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
