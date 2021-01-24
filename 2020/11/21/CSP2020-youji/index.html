@@ -28,7 +28,7 @@
 <meta property="og:description" content="今年的 CSP 终于不是在校运会期间了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-21T06:02:43.000Z">
-<meta property="article:modified_time" content="2021-01-22T01:08:24.679Z">
+<meta property="article:modified_time" content="2020-12-04T12:30:13.847Z">
 <meta property="article:author" content="abcdeffa">
 <meta property="article:tag" content="游记">
 <meta name="twitter:card" content="summary">
@@ -187,7 +187,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-22 09:08:24" itemprop="dateModified" datetime="2021-01-22T09:08:24+08:00">2021-01-22</time>
+                <time title="修改时间：2020-12-04 20:30:13" itemprop="dateModified" datetime="2020-12-04T20:30:13+08:00">2020-12-04</time>
               </span>
 
           
@@ -203,6 +203,35 @@
       
         <p>今年的 CSP 终于不是在校运会期间了。</p>
 <a id="more"></a>
+<p>赛前去小卖铺欢乐购物。</p>
+<h2 id="CSP-J"><a href="#CSP-J" class="headerlink" title="CSP-J"></a>CSP-J</h2><p>感觉这回的 A 难度比上一年的高，但显然是一个二进制拆分，读完所有题以后写了切掉了。</p>
+<p>B 题在读题的时候看到 $n \leq 10^5$ 懵了一小会。自闭了一段时间后觉得普及组不至于考高级数据结构，于是又读了一遍题，发现值域 600，那没事了。写了一下发现过了所有样例就丢下没有管了。</p>
+<p>值得一提的是 A 题还是 B 题的一个样例输出末尾有两个换行，于是我手动修改了样例输出以通过 cmd 的比较。</p>
+<p>然后看到 C 题有表达式的转换，直接弃了先去做 D 题。</p>
+<p>想了一个用若干条向上的路径将一些向右和向下的机场连续路径段拼接起来的做法，但是这样朴素 DP ，即用前缀（？）和优化 DP，是 $O(n^2m)$ 的，过不了。</p>
+<p>于是把朴素 DP 写出来了以后就考虑优化。</p>
+<p>打了个表发现这个好像是可以用决策单调性优化的，然后就写了，和暴力拍了十几组以后发现没问题就拼在一起保存了。</p>
+<p>这个时候已经是 10：00 左右了，但感觉还是有希望 AK 的？</p>
+<p>然后去写 C，手玩了一下样例 2 成功地复习到了表达式的转换方法。然后就是建表达式树并乱搞了。</p>
+<p>考场上口胡了一个做法，脑补了一下觉得是 $O(n)$ 的就丢下不管了。</p>
+<p>过了大样例以后就不管了，觉得自己能 AK 了就在那里吃吃喝喝半小时，期间检查了十多遍文件。</p>
+<p>出场后后悔考场上没有玩小恐龙（</p>
+<p>出场后交流讨论，发现自己 C 题没记忆化而且做法的复杂度很有可能是假的，心态大崩。</p>
+<h2 id="CSP-S"><a href="#CSP-S" class="headerlink" title="CSP-S"></a>CSP-S</h2><p>开场看到 A 就不想写，读了 B，感觉好像有点神仙。</p>
+<p>读了 C，感觉有趣，但我不会。读了 D，博弈题，有趣，但我不会。</p>
+<p>写了一个小时的 A 以后看到自己过了所有样例，就丢下不管了。</p>
+<p>然后发现这个 B 很 Simple，写了过了所有样例就不管了。</p>
+<p>然后对 C 的部分分有点想法，但是觉得 D 更加可做然后就去做 D 了。</p>
+<p>然后手写了两个堆，写了 6k+，调了极久以后过了前两个小样例。然后测大样例，发现答案差的有点小多，然后自闭了一会以后改了一下，发现和大样例有几组数据的答案差 1。然后各种乱改，始终没有过，奋战到最后随便保存了。</p>
+<p>中途去写了一下 C 题的暴力，拿到了 20 分的好成绩。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>顺便说一下，提高组考完出考场以后遇到蛇了，好可怕。</p>
+<p>A 题在出题人的生日那里判错了，改了一个 Byte 以后 60 -&gt; 100，真是快乐呢。</p>
+<p>B 题测了 4 个民间数据，没有一个是过的，结果在官方数据下过了……开心！</p>
+<p>D 题居然还是可以拿到 $n = 3$ 的 20 分。</p>
+<p>赛后改题，发现我普及组的 C 没有考虑有连续的多个非运算的情况，我以为没有这种情况的（</p>
+<p>如果我发现了也许 C 题就 95 分了……但这并没有什么用。</p>
+<p>赛后改提高组的 D 题，发现我的堆写错了一个 Byte，并且我没有意识到修改是保存的……</p>
+<p>改完以后通过 O2 优化 A 掉了。</p>
 
     </div>
 
@@ -286,6 +315,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSP-J"><span class="nav-number">1.</span> <span class="nav-text">CSP-J</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSP-S"><span class="nav-number">2.</span> <span class="nav-text">CSP-S</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -392,59 +422,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
