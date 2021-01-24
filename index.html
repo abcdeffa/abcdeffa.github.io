@@ -178,7 +178,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-24 19:00:59 / 修改时间：19:01:46" itemprop="dateCreated datePublished" datetime="2021-01-24T19:00:59+08:00">2021-01-24</time>
+              <time title="创建时间：2021-01-24 19:00:59 / 修改时间：19:05:15" itemprop="dateCreated datePublished" datetime="2021-01-24T19:00:59+08:00">2021-01-24</time>
             </span>
 
           
@@ -194,75 +194,14 @@
       
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文内容来自于我之前的一个 PPT 和以前写的一个学习笔记，我将内容做了一个整合然后放了上来，部分内容网上可能出现过，作者是我。</p>
 <p>如果你读完一遍后感觉对文章的内容还不太了解，可以先读一读参考资料 [1] 中提到的这篇文章（张一飞《由感性认识到理性认识——透析一类搏弈游戏的解答过程》），再选择阅读本文。</p>
-<h2 id="一道小学奥数题"><a href="#一道小学奥数题" class="headerlink" title="一道小学奥数题"></a>一道小学奥数题</h2><p>现在有 1 堆 20 个石子，先后手轮流操作，每人能选择一个非空的石子堆，取 1 颗或 2 颗石子，谁无法操作谁就输了，问先手是否有必胜策略？</p>
-<p>这是一道简单的小学奥数题，让我们把题目改改：现在有 2 堆石子，第一堆有 20 个石子，第二堆有 21 个石子，先后手轮流操作，每人能选择一个非空的石子堆，取 1 颗或 2 颗石子，谁无法操作谁就输了，问先手是否有必胜策略？</p>
-<p>更进一步地：现在有 $n$ 堆石子，第 $i$ 堆石子有 $a_i$ 个，游戏规则同上，问先手是否有必胜策略？</p>
-<p>你还会做吗？</p>
-<h2 id="定义！"><a href="#定义！" class="headerlink" title="定义！"></a>定义！</h2><p>在刚刚这个游戏中，若只有 1 堆石子，并且现在还有 5 个石子没有被取，那么我们称这个局面为 $G = (5)$。</p>
-<p>我们称这个局面 $G$ 的前继状态为 $G’=(6)$ 和 $G’’=(7)$，因为局面 $G’$ 和局面 $G’’$ 可以通过一次操作得到局面 $G$。</p>
-<p>类似的，我们称局面 $G$ 的后继状态为 $g’=(3)$ 和 $g’’=(4)$，因为局面 $G$ 可以通过一次操作得到局面 $g’$ 和局面 $g’’$。</p>
-<p>如果你理解了的话，我们再来看看局面的拆分和组合。</p>
-<p>如果有 3 堆石子，并且它们在一开始的个数分别为 11、15、19，那么我们称这个局面 $G = (11, 15, 19)$，它可以被拆分成两个子局面 $g_1=(11, 19)$、$g_2=(15)$。</p>
-<p>当然，你也可以把它拆成 $g_1=(11)$、$g_2=(15)$、$g_3=(19)$，拆法还有很多，在这里就不一一列举出来了。</p>
-<p>对于上面的这种拆法，我们称 $g_1+g_2+g_3 = G$。</p>
-<p>那么，我们能否通过子局面的胜负情况来判断出原局面的胜负情况呢？</p>
-<p>不行。</p>
-<p>但我们有另一种方法！</p>
-<h2 id="变！问题的转换！"><a href="#变！问题的转换！" class="headerlink" title="变！问题的转换！"></a>变！问题的转换！</h2><p>在了解了定义后，我们再来看两个显而易见的结论：</p>
-<ol>
-<li><p>如果一个局面 $G$ 是必败的，那么对于它所有的前继 / 后继局面 $G’$，$G’$ 都是必胜的（对手怎么样都赢，找不到破绽）</p>
-</li>
-<li><p>如果一个局面 $G$ 是必胜的，那么对于它所有的前继 / 后继局面 $G’$，至少有一个局面 $G’$ 是必败的（我可以抓住对手的至少一个破绽取胜）</p>
-</li>
-</ol>
-<p>是不是感觉有点意思？</p>
-<h2 id="进入正题吧！"><a href="#进入正题吧！" class="headerlink" title="进入正题吧！"></a>进入正题吧！</h2><p>对于一个局面 $G$，我们称它的 SG 函数值为：</p>
-<script type="math/tex; mode=display">SG(G) = \text{mex}\{SG(G')\}</script><p>其中局面 $G’$ 为局面 $G$ 的后继状态。</p>
-<p>是不是简短而有趣？</p>
-<p>你可能要问了，$\text{mex}$ 是个啥？</p>
-<p>$\text{mex}$ 运算是一个施加于集合的运算，其值为 <strong>最小的不在集合中的非负整数</strong>。</p>
-<p>例如 $\text{mex}\{0, 1, 3\} = 2$、$\text{mex}\{1, 3, 4, 5, 6\} = 0$。</p>
-<p>一般来说（有特例），若一个局面 $G$ 的 $SG$ 函数值 $SG(G)$ 不为 0，那么它必胜，否则它必败。可以根据上面所讲到的两个结论来理解。</p>
-<h2 id="一个更有趣的性质"><a href="#一个更有趣的性质" class="headerlink" title="一个更有趣的性质"></a>一个更有趣的性质</h2><p>对于一个局面 $G$，它的 SG 函数值 $SG(G)$ 满足：</p>
-<script type="math/tex; mode=display">SG(G) = SG(g_1) ⊕ SG(g_2) ⊕ ... ⊕ SG(g_n)</script><p>其中局面 $g_1 + g_2 + … + g_n = G$。</p>
-<p>其中 $⊕$ 为异或符号，在 C++ 语言中用“<code>^</code>”来表示。</p>
-<h2 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h2><p>例题：给你 $n$ 堆石子，第 $i$ 堆石子的个数为 $a_i$，并给出你一个大小为 $m$ 的集合 $\{g_1, g_2, …, g_n\}$。</p>
-<p>先后手轮流操作，每次可以取的石子个数要在集合 $\{g_1, g_2, …, g_n\}$ 中，谁无法操作谁就输了，问你先手是否有必胜策略。</p>
-<p>对于这个例题的伪代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">SG</span> <span class="params">()</span></span></span><br><span class="line"><span class="function">	<span class="title">memset</span><span class="params">(f, <span class="number">0</span>)</span> <span class="comment">// 清空储存 SG 函数值的数组， </span></span></span><br><span class="line"><span class="function">	<span class="comment">//其中 f[i] 表示若只有一堆石子，并且这一堆石子的个数为 i， </span></span></span><br><span class="line"><span class="function">	<span class="comment">//那么先手是否有必胜策略 </span></span></span><br><span class="line">	for i : 1 ~ n</span><br><span class="line">		<span class="built_in">memset</span>(book, <span class="number">0</span>);<span class="comment">//book 数组的作用是算出 mex 值 </span></span><br><span class="line">		<span class="keyword">for</span> j : <span class="number">0</span> ~ m - <span class="number">1</span></span><br><span class="line">			<span class="keyword">if</span> g[j] &gt; i<span class="comment">//因为 i 小于 g[j]， </span></span><br><span class="line">					   <span class="comment">//所以显然不能取 g[j] 个， </span></span><br><span class="line">					   <span class="comment">//因此要 continue 掉， </span></span><br><span class="line">				<span class="keyword">continue</span> </span><br><span class="line">			book[i - g[j]] = <span class="literal">true</span></span><br><span class="line">		<span class="keyword">for</span> j : <span class="number">0</span> ~ maxN - <span class="number">1</span><span class="comment">//这个循环是用来求 mex 的，</span></span><br><span class="line">							<span class="comment">//其中 maxN 表示的是单堆石子个数的最大值 </span></span><br><span class="line">			<span class="keyword">if</span> !book[j]</span><br><span class="line">				f[i] = j</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line"><span class="keyword">int</span> main ()</span><br><span class="line">	SG()</span><br><span class="line">	read(n)</span><br><span class="line">	read(a[<span class="number">1</span>] ~ a[n])</span><br><span class="line">	read(m)</span><br><span class="line">	read(g[<span class="number">1</span>] ~ g[m])</span><br><span class="line">	<span class="keyword">if</span> (f[a[<span class="number">1</span>]] <span class="keyword">xor</span> f[a[<span class="number">2</span>]] <span class="keyword">xor</span> ... f[a[n]])</span><br><span class="line">		<span class="built_in">printf</span> <span class="string">&quot;1&quot;</span><span class="comment">//先手必胜</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span> <span class="string">&quot;0&quot;</span><span class="comment">//先手必败 </span></span><br></pre></td></tr></table></figure>
-<h2 id="例题-amp-题解"><a href="#例题-amp-题解" class="headerlink" title="例题 &amp; 题解"></a>例题 &amp; 题解</h2><p>E.g.1 Luogu P2197 【模板】nim游戏</p>
-<p>可以直接暴力求出 SG 函数值，然后判断一下给定的每堆石子的 SG 函数值的异或和是否为 0 即可。</p>
-<p>也可以打个表，发现石子个数为 $i$ 的一堆石子的 SG 函数值为 $i$，于是就直接判断一下每堆石子的个数的异或和是否为 0 即可。</p>
-<p>对于打表找 SG 函数的规律，是一个博弈论中常用的套路。</p>
-<p>E.g.2 HDU P1848 Fibonacci again and again</p>
-<p>做法类似于 E.g.1 中的第一种做法。</p>
-<p>E.g.3 HDU P2897 邂逅明下</p>
-<p>做法类似于 E.g.1 中的第二种做法。</p>
-<h2 id="练习题"><a href="#练习题" class="headerlink" title="练习题"></a>练习题</h2><ul>
-<li><p>HDU 1847 Good Luck in CET-4 Everybody!</p>
-</li>
-<li><p>POJ P2425 A Chess Game</p>
-</li>
-<li><p>Luogu P6639 「JYLOI Round 1」让</p>
-</li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1] 由感性认识到理性认识——透析一类搏弈游戏的解答过程。</p>
-<p>[2] 组合游戏略述——浅谈SG游戏的若干拓展及变形。</p>
-<p>[3] 博弈论。</p>
-<p>[4] SG函数。</p>
-<p>[5] hdu 1848Fibonacci again and again。</p>
-<p>[6] 专题训练之博弈。</p>
-<p>[7] 博弈by高嘉煊。</p>
-<p>[8] sg函数入门题。</p>
-<p>[9] 【转】博弈-翻硬币游戏。</p>
-<p>[10] 博弈:关于SG函数的一些心得（知识总结+叙述证明+例题）。</p>
-<p>[11] POJ2425（树形，无向无环图博弈）。</p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p><strong>前言</strong> 中提到的 PPT 我放在腾讯微云共享组中了，有需要的请自取。</p>
-<p>邀请链接：<a target="_blank" rel="noopener" href="https://share.weiyun.com/0BgMrcWf-g">https://share.weiyun.com/0BgMrcWf-g</a> ，因为是给班级同学讲的，所以内容可能比较基础。</p>
-<blockquote>
-<p>SG 函数与“游戏的和”的概念不是让我们去组合、制造稀奇古怪的游戏，而是把遇到的看上去有些复杂的游戏试图分成若干个子游戏，对于每个比原游戏简化很多的子游戏找出它的 SG 函数，然后全部异或起来就得到了原游戏的 SG 函数，就可以解决原游戏了。——百度百科</p>
-</blockquote>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/24/sg-han-shu/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
