@@ -20,17 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="OIer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="abcdeffa&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/2021/page/2/index.html">
+  <meta name="description" content="DescriptionSolution一眼发现自己并不会做，棒棒的分数取模让我的求近似值的 DP 应该可以拿到 0 分的好成绩。 但还是要打的嘛。打完以后很没有梦想地决定去拿 $p &#x3D; \dfrac{1}{2}$ 的 20 分。 然后发现好像有点规律！ 啊啊啊我好像能 A，写写写！ 啊它假了？改！假了？改！假！改！假！改！假！ 终于在猜了一个多小时的结论后，我写出了一个我自己都不知道为什么是对的程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GMOJ S6965 【游戏】">
+<meta property="og:url" content="http://example.com/2021/01/30/GMOJ-S6965/index.html">
 <meta property="og:site_name" content="abcdeffa&#39;s Blog">
-<meta property="og:description" content="OIer">
+<meta property="og:description" content="DescriptionSolution一眼发现自己并不会做，棒棒的分数取模让我的求近似值的 DP 应该可以拿到 0 分的好成绩。 但还是要打的嘛。打完以后很没有梦想地决定去拿 $p &#x3D; \dfrac{1}{2}$ 的 20 分。 然后发现好像有点规律！ 啊啊啊我好像能 A，写写写！ 啊它假了？改！假了？改！假！改！假！改！假！ 终于在猜了一个多小时的结论后，我写出了一个我自己都不知道为什么是对的程">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-30T08:42:30.000Z">
+<meta property="article:modified_time" content="2021-01-30T11:08:10.678Z">
 <meta property="article:author" content="abcdeffa">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/archives/2021/page/2/">
+<link rel="canonical" href="http://example.com/2021/01/30/GMOJ-S6965/">
 
 
 <script id="page-configurations">
@@ -38,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | abcdeffa's Blog</title>
+  <title>GMOJ S6965 【游戏】 | abcdeffa's Blog</title>
   
 
 
@@ -147,235 +149,92 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">不错! 目前共计 79 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/GMOJ-S6965/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="abcdeffa">
+      <meta itemprop="description" content="OIer">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="abcdeffa's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GMOJ S6965 【游戏】
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-30 16:42:30 / 修改时间：19:08:10" itemprop="dateCreated datePublished" datetime="2021-01-30T16:42:30+08:00">2021-01-30</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-26T19:28:51+08:00"
-              content="2021-01-26">
-          01-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/26/GMOJ-J2470/" itemprop="url">
-            <span itemprop="name">GMOJ J2470 【配对】</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-26T15:34:56+08:00"
-              content="2021-01-26">
-          01-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/26/GDKOI2021-Jzu-brief-solution/" itemprop="url">
-            <span itemprop="name">GDKOI2021 J 组简要题解</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-25T21:57:26+08:00"
-              content="2021-01-25">
-          01-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/25/GMOJ-S4908/" itemprop="url">
-            <span itemprop="name">GMOJ S4908 【愤怒的小鸟】</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-25T21:36:10+08:00"
-              content="2021-01-25">
-          01-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/25/CF-2B/" itemprop="url">
-            <span itemprop="name">CF2B 【The least round way】</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-24T19:09:02+08:00"
-              content="2021-01-24">
-          01-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/24/youji-NOIP2020/" itemprop="url">
-            <span itemprop="name">NOIP2020 游记</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-24T19:00:59+08:00"
-              content="2021-01-24">
-          01-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/24/sg-han-shu/" itemprop="url">
-            <span itemprop="name">最优策略？最优策略！——浅谈 SG 函数</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-24T16:03:26+08:00"
-              content="2021-01-24">
-          01-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/24/CF-763C/" itemprop="url">
-            <span itemprop="name">CF763C 【Timofey and remoduling】</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-22T14:42:50+08:00"
-              content="2021-01-22">
-          01-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/22/GMOJ-S5432/" itemprop="url">
-            <span itemprop="name">GMOJ S5432 【三元组】</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-22T14:26:04+08:00"
-              content="2021-01-22">
-          01-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/22/GMOJ-S5466/" itemprop="url">
-            <span itemprop="name">GMOJ S5466 【玩游戏】</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-22T09:44:36+08:00"
-              content="2021-01-22">
-          01-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/22/GMOJ-S5465/" itemprop="url">
-            <span itemprop="name">GMOJ S5465 【道路重建】</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>一眼发现自己并不会做，棒棒的分数取模让我的求近似值的 DP 应该可以拿到 0 分的好成绩。</p>
+<p>但还是要打的嘛。打完以后很没有梦想地决定去拿 $p = \dfrac{1}{2}$ 的 20 分。</p>
+<p>然后发现好像有点规律！</p>
+<p>啊啊啊我好像能 A，写写写！</p>
+<p>啊它假了？改！假了？改！假！改！假！改！假！</p>
+<p>终于在猜了一个多小时的结论后，我写出了一个我自己都不知道为什么是对的程序。然后它过小数据的拍。然后我就没有管了。</p>
+<p>以上为废话。</p>
+<p>考虑设 $f_i$ 表示从 $i$ 到 $n$ 的期望局数。</p>
+<p>然后有：</p>
+<script type="math/tex; mode=display">f_i = p_if_{i + 1} + (1 - p_i)f_{i - 1} + 1(0 < i < n)</script><p>其中 <script type="math/tex">f_n = 0, f_{n - 1} = (1 - p_i)f_{n - 2} + 1</script>。</p>
+<p>然后有 $f_{i + 1} = p_{i + 1}f_{i + 2} + (1 - p_{i + 1})f_i + 1$</p>
+<p>移项，得：</p>
+<script type="math/tex; mode=display">(1 - p_{i + 1})f_i = f_{i + 1} - p_{i + 1}f_{i + 2} - 1</script><p>把那个 $(1 - p_{i + 1})$ 除过去，得到：</p>
+<p>$f_i = \dfrac{f_{i + 1} - p_{i + 1}f_{i + 2} - 1}{(1 - p_{i + 1})}$</p>
+<p>然后你不停代换，最后解一下方程就好了。</p>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/29/GDKOI2021-Szu-brief-solution/" rel="prev" title="GDKOI2021 S 组简要题解">
+      <i class="fa fa-chevron-left"></i> GDKOI2021 S 组简要题解
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/2021/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2021/page/3/">3</a><a class="extend next" rel="next" href="/archives/2021/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
@@ -427,6 +286,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
